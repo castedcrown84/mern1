@@ -5,10 +5,10 @@ const createWorkout = async(req, res) => {
 
     try{
         const workoutData = await Workouts.create(req.body)
-        res.json(workoutData)
+        res.status(200).json(workoutData)
     
     }catch(error){
-        res.json({message: error.message})
+        res.status(400).json({message: error.message})
     }
 
 }
@@ -17,9 +17,9 @@ const createWorkout = async(req, res) => {
 const getWorkouts = async(req, res) => {
 try{
     const workoutData = await Workouts.find({})
-    res.json(workoutData)
+    res.status(200).json(workoutData)
 }catch(error){
-    res.json({message: error.message})
+    res.status(400).json({message: error.message})
 }
 }
 
@@ -30,10 +30,10 @@ const getWorkout = async(req, res) => {
     
     try{
        const workoutData = await Workouts.findById(id)
-        res.json(workoutData)
+        res.status(200).json(workoutData)
 
     }catch(error){
-        res.json(error)
+        res.status(200).json(error)
 
     }
 }
