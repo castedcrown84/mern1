@@ -1,23 +1,13 @@
 const router = require('express').Router();
 const Workouts = require('../models/Workouts');
-const {createWorkout, getWorkouts} = require('../controllers/workoutController')
+const {createWorkout, getWorkouts, getWorkout} = require('../controllers/workoutController')
 
 
 //Get all workouts
 router.get("/", getWorkouts)
 
 //Get a single workout
-router.get("/workout/:id", async(req, res) => {
-    try{
-
-        const workoutData = await Workouts.findOne(req.params.id)
-        res.json(workoutData)
-
-    }catch(err){
-
-        res.json({message: err.message})
-    }
-})
+router.get("/:id", getWorkout)
 
 router.post('/', createWorkout)
   
